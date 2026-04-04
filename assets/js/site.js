@@ -76,6 +76,7 @@
       first_name:    form.querySelector('[name="fname"]').value.trim(),
       last_name:     form.querySelector('[name="lname"]').value.trim(),
       phone:         phoneField.value.trim(),
+      email:         (form.querySelector('[name="email"]').value || '').trim(),
       address:       form.querySelector('[name="address"]').value.trim(),
       city:          form.querySelector('[name="city"]').value.trim(),
       zip:           form.querySelector('[name="zip"]').value.trim(),
