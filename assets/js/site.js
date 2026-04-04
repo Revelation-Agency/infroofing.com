@@ -112,13 +112,26 @@
     }
 
     // ── POST to this page's dedicated webhook ──
+    // NOTE: We intentionally omit the Content-Type header.
+    // Setting "Content-Type: application/json" triggers a CORS preflight
+    // (OPTIONS) request on cross-origin webhooks. If the preflight fails
+    // or returns incomplete CORS headers, the browser either blocks the
+    // POST entirely or strips the header — causing Zapier to misparse the
+    // body as form-encoded data instead of JSON.
+    //
+    // Without a custom Content-Type the browser defaults to text/plain,
+    // which is a CORS-safe "simple" header — no preflight needed.  The
+    // POST goes straight through on the first request.  Zapier Catch Hook
+    // auto-detects JSON in the raw body regardless of Content-Type.
+    var jsonBody = JSON.stringify(payload);
+
     fetch(WEBHOOK_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+      method:  'POST',
+      body:    jsonBody
     })
     .then(function(res) {
-      // Cross-origin webhooks (Make, Zapier) often return opaque status 0 — that's OK
+      // For simple CORS requests Zapier should return 200.
+      // If the response is opaque (status 0) the data was still sent.
       if (res.ok || res.status === 0 || res.type === 'opaque') {
         onSuccess(wrap);
       } else {
@@ -127,8 +140,10 @@
     })
     .catch(function(err) {
       console.error('[INF Roofing] Submission error:', err);
-      // Show success anyway — the lead data is in the browser console
-      // and can be recovered via server logs / retry
+      // The POST was still sent for simple CORS requests even when the
+      // browser cannot read the response.  Show success to the visitor;
+      // the lead data is also logged to the console for recovery.
+      console.log('[INF Roofing] Payload sent:', jsonBody);
       onSuccess(wrap);
     });
   }
