@@ -112,26 +112,37 @@
     }
 
     // ── POST to this page's dedicated webhook ──
-    // NOTE: We intentionally omit the Content-Type header.
-    // Setting "Content-Type: application/json" triggers a CORS preflight
-    // (OPTIONS) request on cross-origin webhooks. If the preflight fails
-    // or returns incomplete CORS headers, the browser either blocks the
-    // POST entirely or strips the header — causing Zapier to misparse the
-    // body as form-encoded data instead of JSON.
+    // We send as application/x-www-form-urlencoded via URLSearchParams.
     //
-    // Without a custom Content-Type the browser defaults to text/plain,
-    // which is a CORS-safe "simple" header — no preflight needed.  The
-    // POST goes straight through on the first request.  Zapier Catch Hook
-    // auto-detects JSON in the raw body regardless of Content-Type.
-    var jsonBody = JSON.stringify(payload);
+    // Why NOT application/json:
+    //   "Content-Type: application/json" is not a CORS-safe header, so
+    //   the browser must send an OPTIONS preflight to hooks.zapier.com.
+    //   Zapier's preflight response is inconsistent — the browser may
+    //   block the POST or strip the header, causing Zapier to see the
+    //   body as an unparsed "querystring" blob with no field values.
+    //
+    // Why NOT text/plain (no Content-Type header):
+    //   Zapier Catch Hook does NOT auto-detect JSON from a text/plain
+    //   body.  The entire JSON string lands as a single "querystring"
+    //   key with no value — all downstream fields are blank.
+    //
+    // Why application/x-www-form-urlencoded works:
+    //   1. It is a CORS-safe "simple" Content-Type — no preflight.
+    //   2. The browser sets the header automatically from URLSearchParams.
+    //   3. Zapier Catch Hook parses every key=value pair into its own
+    //      top-level field, exactly like flat JSON.
+    //   4. Each field (first_name, last_name, phone, etc.) appears as
+    //      an individual mapped field in the Zapier trigger output.
+    var formBody = new URLSearchParams();
+    Object.keys(payload).forEach(function (key) {
+      formBody.append(key, payload[key] != null ? payload[key] : '');
+    });
 
     fetch(WEBHOOK_URL, {
-      method:  'POST',
-      body:    jsonBody
+      method: 'POST',
+      body:   formBody          // browser sets Content-Type automatically
     })
     .then(function(res) {
-      // For simple CORS requests Zapier should return 200.
-      // If the response is opaque (status 0) the data was still sent.
       if (res.ok || res.status === 0 || res.type === 'opaque') {
         onSuccess(wrap);
       } else {
@@ -140,10 +151,9 @@
     })
     .catch(function(err) {
       console.error('[INF Roofing] Submission error:', err);
-      // The POST was still sent for simple CORS requests even when the
-      // browser cannot read the response.  Show success to the visitor;
-      // the lead data is also logged to the console for recovery.
-      console.log('[INF Roofing] Payload sent:', jsonBody);
+      // For simple CORS requests the POST was still sent even if the
+      // browser cannot read the response.  Show success to the visitor.
+      console.log('[INF Roofing] Payload sent:', Object.fromEntries(formBody));
       onSuccess(wrap);
     });
   }
