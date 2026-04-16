@@ -2,7 +2,7 @@
 // Required env vars: META_PIXEL_ID, META_ACCESS_TOKEN
 // These are set in Vercel dashboard under Project → Settings → Environment Variables
 
-import crypto from 'crypto';
+const crypto = require('crypto');
 
 const GRAPH_API = 'https://graph.facebook.com/v19.0';
 
@@ -16,7 +16,6 @@ function hashUserData(raw) {
   if (raw.em) hashed.em = sha256(raw.em.trim().toLowerCase());
   if (raw.ph) {
     const digits = raw.ph.replace(/\D/g, '');
-    // Prepend US country code if not already international
     const normalized = digits.length === 10 ? '1' + digits : digits;
     hashed.ph = sha256(normalized);
   }
@@ -30,14 +29,14 @@ function hashUserData(raw) {
   if (raw.fbc) hashed.fbc = raw.fbc;
   if (raw.fbp) hashed.fbp = raw.fbp;
 
-  // IP and user-agent come from the request, not the body
+  // IP and user-agent injected server-side
   if (raw.client_ip_address) hashed.client_ip_address = raw.client_ip_address;
   if (raw.client_user_agent) hashed.client_user_agent = raw.client_user_agent;
 
   return hashed;
 }
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', 'https://infroofing.com');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -64,10 +63,10 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'event_name and event_id are required' });
   }
 
-  // Inject server-side signals the browser cannot provide
+  const xForwardedFor = req.headers['x-forwarded-for'] || '';
   const enrichedUserData = {
     ...user_data,
-    client_ip_address: req.headers['x-forwarded-for']?.split(',')[0].trim() || '',
+    client_ip_address: xForwardedFor.split(',')[0].trim() || '',
     client_user_agent: req.headers['user-agent'] || ''
   };
 
@@ -109,4 +108,4 @@ export default async function handler(req, res) {
     console.error('[CAPI] Network error:', err.message);
     return res.status(500).json({ error: 'Network error reaching Meta API' });
   }
-}
+};
