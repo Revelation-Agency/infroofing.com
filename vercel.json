@@ -1,6 +1,11 @@
 {
   "cleanUrls": true,
   "trailingSlash": true,
+  "functions": {
+    "api/meta-capi.js": {
+      "runtime": "nodejs20.x"
+    }
+  },
   "headers": [
     {
       "source": "/assets/images/(.*)",

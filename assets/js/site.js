@@ -1,7 +1,7 @@
 /* ════════════════════════════════════════════════
    INF Roofing — Form Submission Handler
    Per-page webhook targets, validation, UTM capture
-   No analytics — that layer is added separately
+   Meta Pixel + CAPI event deduplication
    ════════════════════════════════════════════════ */
 
 (function () {
@@ -13,6 +13,51 @@
   var PHONE_RAW    = CFG.phoneRaw     || '';
   var PHONE_DISPLAY= CFG.phoneDisplay || '';
   var WEBHOOK_URL  = CFG.webhookUrl   || '';
+
+  // ══════════════════════════════════════════════
+  // 0. META CAPI HELPERS
+  // ══════════════════════════════════════════════
+
+  // Generates a unique event ID for browser↔server deduplication.
+  // Same ID is passed to fbq() and the CAPI relay function.
+  function generateEventId() {
+    return 'evt_' + Date.now() + '_' + Math.random().toString(36).slice(2, 9);
+  }
+
+  // Reads the _fbp cookie (Meta first-party cookie, auto-set by pixel).
+  function getFbp() {
+    var match = document.cookie.match(/(?:^|;\s*)_fbp=([^;]+)/);
+    return match ? match[1] : '';
+  }
+
+  // Reads the _fbc cookie (set when visitor arrives via a Facebook ad click).
+  // Falls back to constructing fbc from fbclid URL param if cookie is absent.
+  function getFbc() {
+    var match = document.cookie.match(/(?:^|;\s*)_fbc=([^;]+)/);
+    if (match) return match[1];
+    var fbclid = new URLSearchParams(window.location.search).get('fbclid');
+    if (fbclid) return 'fb.1.' + Date.now() + '.' + fbclid;
+    return '';
+  }
+
+  // Sends a server-side event to the CAPI relay. Fire-and-forget —
+  // errors are logged but never shown to the visitor.
+  function sendCAPIEvent(eventName, eventId, userData, customData) {
+    var payload = {
+      event_name:       eventName,
+      event_id:         eventId,
+      event_source_url: window.location.href,
+      user_data:        userData  || {},
+      custom_data:      customData || {}
+    };
+    fetch('/api/meta-capi', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify(payload)
+    }).catch(function (err) {
+      console.warn('[CAPI] Failed to send ' + eventName + ':', err.message);
+    });
+  }
 
   // ══════════════════════════════════════════════
   // 1. UTM + REFERRER CAPTURE
@@ -65,6 +110,10 @@
       return;
     }
 
+    // ── Generate event ID for Meta CAPI deduplication ──
+    // Stored on the form element so onSuccess can access it.
+    form._metaLeadEventId = generateEventId();
+
     // ── Disable button ──
     btn.disabled = true;
     btn.textContent = 'Submitting...';
@@ -108,7 +157,7 @@
     if (!WEBHOOK_URL || WEBHOOK_URL.indexOf('YOUR_') === 0) {
       console.warn('[INF Roofing] Webhook URL not configured for source:', SOURCE);
       console.log('[INF Roofing] Payload that would be sent:', JSON.stringify(payload, null, 2));
-      onSuccess(wrap);
+      onSuccess(wrap, form);
       return;
     }
 
@@ -145,7 +194,7 @@
     })
     .then(function(res) {
       if (res.ok || res.status === 0 || res.type === 'opaque') {
-        onSuccess(wrap);
+        onSuccess(wrap, form);
       } else {
         throw new Error('Webhook returned ' + res.status);
       }
@@ -155,13 +204,32 @@
       // For simple CORS requests the POST was still sent even if the
       // browser cannot read the response.  Show success to the visitor.
       console.log('[INF Roofing] Payload sent:', Object.fromEntries(formBody));
-      onSuccess(wrap);
+      onSuccess(wrap, form);
     });
   }
 
-  function onSuccess(wrap) {
-    // ── Meta Pixel: Lead conversion ──
-    if (typeof fbq === 'function') { fbq('track', 'Lead'); }
+  function onSuccess(wrap, form) {
+    var eventId = (form && form._metaLeadEventId) || generateEventId();
+
+    // ── Meta Pixel: Lead (browser-side, with event ID for deduplication) ──
+    if (typeof fbq === 'function') {
+      fbq('track', 'Lead', {}, { eventID: eventId });
+    }
+
+    // ── CAPI: Lead (server-side mirror with same event ID) ──
+    var f = form || {};
+    var userData = {
+      em:  (f.querySelector && f.querySelector('[name="email"]'))  ? f.querySelector('[name="email"]').value.trim()  : '',
+      ph:  (f.querySelector && f.querySelector('[name="phone"]'))  ? f.querySelector('[name="phone"]').value.trim()  : '',
+      fn:  (f.querySelector && f.querySelector('[name="fname"]'))  ? f.querySelector('[name="fname"]').value.trim()  : '',
+      ln:  (f.querySelector && f.querySelector('[name="lname"]'))  ? f.querySelector('[name="lname"]').value.trim()  : '',
+      ct:  (f.querySelector && f.querySelector('[name="city"]'))   ? f.querySelector('[name="city"]').value.trim()   : '',
+      st:  'ca',
+      zp:  (f.querySelector && f.querySelector('[name="zip"]'))    ? f.querySelector('[name="zip"]').value.trim()    : '',
+      fbc: getFbc(),
+      fbp: getFbp()
+    };
+    sendCAPIEvent('Lead', eventId, userData, { source: SOURCE });
 
     wrap.innerHTML =
       '<div class="form-success">' +
@@ -180,18 +248,28 @@
   // 3. INIT
   // ══════════════════════════════════════════════
   document.addEventListener('DOMContentLoaded', function () {
+    // ── CAPI: PageView — server-side mirror of the browser pixel PageView ──
+    // The browser pixel fires fbq('track','PageView') in <head> with an event_id
+    // stored as window._pvEventId.  We read that same ID here so both sides
+    // share it and Meta can deduplicate correctly.
+    var pageViewEventId = window._pvEventId || generateEventId();
+    sendCAPIEvent('PageView', pageViewEventId, { fbc: getFbc(), fbp: getFbp() }, { source: SOURCE });
+
     var form = document.querySelector('.form-wrap form');
     if (form) {
       form.addEventListener('submit', handleFormSubmit);
     }
 
-    // ── Meta Pixel: Contact — fires on any tel: link click ──
+    // ── Meta Pixel + CAPI: Contact — fires on any tel: link click ──
     // Attached at the <a> level so nested SVG/span clicks bubble correctly.
-    // Each link gets one handler; no shared flag needed since each click is
-    // a distinct user-initiated phone call.
+    // Each click generates its own event ID for browser↔server deduplication.
     document.querySelectorAll('a[href^="tel:"]').forEach(function(link) {
       link.addEventListener('click', function() {
-        if (typeof fbq === 'function') { fbq('track', 'Contact'); }
+        var contactEventId = generateEventId();
+        if (typeof fbq === 'function') {
+          fbq('track', 'Contact', {}, { eventID: contactEventId });
+        }
+        sendCAPIEvent('Contact', contactEventId, { fbc: getFbc(), fbp: getFbp() }, { source: SOURCE });
       });
     });
   });

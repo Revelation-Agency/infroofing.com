@@ -30,7 +30,8 @@
   s=b.getElementsByTagName(e)[0];
   s.parentNode.insertBefore(t,s)}(window, document,'script');
   fbq('init', '1010755291154748');
-  fbq('track', 'PageView');
+  window._pvEventId = 'pv_' + Date.now() + '_' + Math.random().toString(36).slice(2, 9);
+  fbq('track', 'PageView', {}, { eventID: window._pvEventId });
   </script>
   <noscript>
     <img height="1" width="1" style="display:none"
