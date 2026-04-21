@@ -1902,3 +1902,135 @@ p:last-child { margin-bottom: 0; }
   .contact-cols { grid-template-columns: 1fr; }
 }
 
+/* ── Why-Grid (2-col checklist grid) ── */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+.why-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: var(--surface, #f8f9fc);
+  border-radius: var(--radius-md, 10px);
+  padding: 22px 20px;
+}
+.why-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--green, #2a7d4f);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+.why-item strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy, #1a2e4a);
+  margin-bottom: 6px;
+}
+.why-item p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-muted, #6b7280);
+  line-height: 1.6;
+}
+@media (max-width: 768px) {
+  .why-grid { grid-template-columns: 1fr; }
+  .trust-row { grid-template-columns: 1fr !important; }
+}
+
+/* ── Mobile-critical: collapse all multi-col grids ≤640px ── */
+@media (max-width: 640px) {
+  /* Collapse every multi-column grid to single column */
+  .cred-grid,
+  .benefit-cards,
+  .process-grid,
+  .test-grid,
+  .facts-grid,
+  .areas-grid,
+  .sln-grid,
+  .problem-cards,
+  .trust-compare,
+  .math-cols,
+  .contact-cols,
+  .foot-grid,
+  .form-cols,
+  .grid-2,
+  .rev-layout,
+  .why-grid,
+  .trust-row,
+  .spotlight-cols {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  /* Inline style grids (process steps, financing cards) */
+  section .process-grid[style],
+  section [style*="grid-template-columns: repeat(4,1fr)"],
+  section [style*="grid-template-columns:repeat(4,1fr)"],
+  section [style*="grid-template-columns: repeat(3,1fr)"],
+  section [style*="grid-template-columns:repeat(3,1fr)"],
+  section [style*="grid-template-columns: repeat(2,1fr)"],
+  section [style*="grid-template-columns:repeat(2,1fr)"] {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  /* Cap section padding so content breathes without dead space */
+  .section,
+  .page-banner,
+  .cred-bar,
+  .revelation,
+  .final-cta {
+    padding: 40px 0 !important;
+  }
+  .container {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /* Hero stacking + smaller 85% stat */
+  .hero { padding: 32px 0 40px !important; }
+  .rev-pct { font-size: 72px !important; letter-spacing: -2px; }
+  .page-banner h1 { font-size: clamp(28px, 7vw, 36px) !important; }
+  .section-heading { font-size: clamp(24px, 6vw, 30px) !important; }
+
+  /* Hamburger — guarantee top-right anchor */
+  .site-nav-toggle {
+    display: block !important;
+    margin-left: auto !important;
+    position: relative;
+    z-index: 20;
+  }
+  .site-nav-right { display: none !important; }
+  .site-nav-links { display: none !important; }
+  .site-nav-inner { gap: 8px; }
+  .site-nav-logo img { max-height: 32px; }
+
+  /* Prevent horizontal overflow from wide children — use clip so position:sticky still works */
+  body { overflow-x: clip; }
+  html { overflow-x: clip; }
+  img, video, iframe { max-width: 100%; height: auto; }
+
+  /* Trust pills wrap cleanly */
+  .trust-pills { justify-content: center; gap: 6px; }
+  .trust-pill { font-size: 12px; padding: 4px 10px; }
+
+  /* Mobile sticky CTA doesn't overlap footer */
+  .site-footer { padding-bottom: 84px; }
+
+  /* Form mobile padding */
+  .form-wrap, .phone-wrap { padding: 24px 20px !important; }
+  .big-phone { font-size: 32px !important; }
+}
+

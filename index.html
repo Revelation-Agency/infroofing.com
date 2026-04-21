@@ -2,834 +2,347 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X80HR36QTB"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-X80HR36QTB');
-  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Roof Assessment | Infinite Roofing Solutions</title>
-  <meta name="description" content="Why pay $40,000 for a new roof? Find out if your roof qualifies for a $5,200 restoration. Authorized RoofMaxx Dealer serving Fresno, Alameda, Sacramento &amp; Contra Costa Counties.">
+  <title>Infinite Roofing Solutions | Fresno &amp; Central Valley Roofing — Repairs, Rejuvenation, Replacement</title>
+  <meta name="description" content="Infinite Roofing Solutions — Central Valley's only 5-Star Certified RoofMaxx dealer. Honest roof repairs, RoofMaxx rejuvenation, and full re-roofing in Fresno, Clovis, Madera, and surrounding areas. CSLB #1126804.">
+  <link rel="canonical" href="https://infroofing.com/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/style.css">
-  <meta name="page-source" content="homepage">
-  <link rel="canonical" href="https://infroofing.com/">
-  <!-- Meta Pixel Code -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X80HR36QTB"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-X80HR36QTB');</script>
   <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src='https://connect.facebook.net/en_US/fbevents.js';
-  s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script');
-  fbq('init', '1010755291154748');
-  fbq('track', 'PageView');
+  window._pvEventId = 'pv_' + Date.now() + '_' + Math.random().toString(36).slice(2,9);
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','1010755291154748');
+  fbq('track','PageView',{},{eventID:window._pvEventId});
   </script>
-  <noscript>
-    <img height="1" width="1" style="display:none"
-         src="https://www.facebook.com/tr?id=1010755291154748&ev=PageView&noscript=1"/>
-  </noscript>
-  <!-- End Meta Pixel Code -->
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1010755291154748&ev=PageView&noscript=1"/></noscript>
+  <style>
+    /* Homepage-specific polish (scoped, small) */
+    .home-hero { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%); color: #fff; padding: clamp(64px, 9vw, 120px) 0 clamp(56px, 8vw, 96px); }
+    .home-hero .eyebrow { color: var(--gold); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 13px; }
+    .home-hero h1 { font-family: var(--font-serif); font-size: clamp(34px, 5vw, 58px); line-height: 1.12; margin: 16px 0 20px; max-width: 900px; color: #fff; }
+    .home-hero .lead { font-size: clamp(17px, 1.4vw, 20px); line-height: 1.65; color: rgba(255,255,255,0.9); max-width: 720px; margin-bottom: 32px; }
+    .home-hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 32px; }
+    .home-hero-ctas .btn-primary { background: var(--green); color: #fff; padding: 16px 28px; border-radius: var(--radius-md); font-weight: 700; font-size: 16px; box-shadow: var(--shadow-btn); display: inline-flex; align-items: center; gap: 8px; }
+    .home-hero-ctas .btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.4); padding: 14px 26px; border-radius: var(--radius-md); font-weight: 600; font-size: 16px; display: inline-flex; align-items: center; gap: 8px; }
+    .home-hero-badges { display: flex; flex-wrap: wrap; gap: 10px; }
+    .home-hero-badges span { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 8px 14px; border-radius: 999px; font-size: 13px; font-weight: 500; }
+
+    /* Service cards */
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+    .service-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px 28px; box-shadow: var(--shadow-sm); transition: transform 0.2s ease, box-shadow 0.2s ease; display: flex; flex-direction: column; }
+    .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .service-card .svc-tag { display: inline-block; background: var(--green-light); color: var(--green-dark); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 4px; align-self: flex-start; margin-bottom: 16px; }
+    .service-card h3 { font-family: var(--font-serif); font-size: 24px; color: var(--navy); margin-bottom: 12px; }
+    .service-card p { color: var(--text-body); font-size: 15.5px; line-height: 1.65; margin-bottom: 20px; flex-grow: 1; }
+    .service-card .svc-link { color: var(--navy); font-weight: 700; font-size: 15px; display: inline-flex; align-items: center; gap: 6px; border-bottom: 2px solid var(--gold); padding-bottom: 2px; align-self: flex-start; }
+
+    /* Google reviews */
+    .reviews-section { background: linear-gradient(180deg, #fff 0%, var(--bg-light) 100%); }
+    .reviews-head { text-align: center; margin-bottom: 40px; }
+    .reviews-stars-big { color: var(--gold); font-size: 32px; letter-spacing: 4px; margin-bottom: 12px; }
+    .reviews-summary { font-size: 17px; color: var(--text-body); }
+    .reviews-summary strong { color: var(--navy); }
+    .reviews-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .review-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 24px; box-shadow: var(--shadow-xs); }
+    .review-stars { color: var(--gold); font-size: 18px; letter-spacing: 2px; margin-bottom: 12px; }
+    .review-text { font-size: 15.5px; color: var(--text-body); line-height: 1.7; margin-bottom: 16px; font-style: italic; }
+    .review-author { display: flex; justify-content: space-between; align-items: center; padding-top: 14px; border-top: 1px solid var(--border); font-size: 14px; }
+    .review-author strong { color: var(--navy); }
+    .review-author span { color: var(--text-muted); }
+    .review-google-tag { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; color: var(--text-muted); }
+    .reviews-cta-wrap { text-align: center; margin-top: 40px; }
+    .reviews-cta { display: inline-flex; align-items: center; gap: 10px; background: #fff; border: 2px solid var(--gold); color: var(--navy); padding: 14px 26px; border-radius: var(--radius-md); font-weight: 700; font-size: 16px; box-shadow: var(--shadow-sm); }
+    .reviews-cta:hover { background: var(--gold); color: #fff; }
+
+    /* About strip */
+    .about-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .about-strip h2 { font-family: var(--font-serif); font-size: clamp(28px, 3vw, 40px); color: var(--navy); line-height: 1.2; margin-bottom: 16px; }
+    .about-strip p { font-size: 16.5px; line-height: 1.75; color: var(--text-body); margin-bottom: 16px; }
+    .about-facts { background: var(--bg-light); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px; }
+    .about-facts h3 { font-family: var(--font-serif); color: var(--navy); font-size: 22px; margin-bottom: 16px; }
+    .about-facts ul { list-style: none; padding: 0; margin: 0; }
+    .about-facts li { padding: 10px 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 10px; font-size: 15.5px; }
+    .about-facts li:last-child { border-bottom: none; }
+    .about-facts li svg { flex-shrink: 0; color: var(--green); margin-top: 3px; }
+    .about-link { display: inline-flex; align-items: center; gap: 6px; color: var(--navy); font-weight: 700; border-bottom: 2px solid var(--gold); padding-bottom: 2px; }
+
+    /* Service areas teaser */
+    .areas-band { background: var(--navy); color: #fff; padding: clamp(48px, 6vw, 80px) 0; }
+    .areas-band h2 { font-family: var(--font-serif); font-size: clamp(26px, 3vw, 36px); color: #fff; margin-bottom: 12px; }
+    .areas-band p { color: rgba(255,255,255,0.85); font-size: 16.5px; max-width: 720px; margin-bottom: 24px; }
+    .areas-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+    .areas-chips span { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 8px 14px; border-radius: 999px; font-size: 14px; }
+    .areas-band .areas-link { display: inline-flex; align-items: center; gap: 6px; color: var(--gold); font-weight: 700; border-bottom: 2px solid var(--gold); padding-bottom: 2px; }
+
+    /* Final CTA band */
+    .home-final-cta { background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%); color: #fff; text-align: center; padding: clamp(56px, 7vw, 88px) 0; }
+    .home-final-cta h2 { font-family: var(--font-serif); font-size: clamp(28px, 3.2vw, 40px); color: #fff; margin-bottom: 14px; }
+    .home-final-cta p { color: rgba(255,255,255,0.92); font-size: 17px; max-width: 620px; margin: 0 auto 28px; }
+    .home-final-ctas { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+    .home-final-ctas .fc-phone { background: #fff; color: var(--green-dark); padding: 16px 28px; border-radius: var(--radius-md); font-weight: 700; font-size: 18px; display: inline-flex; align-items: center; gap: 8px; }
+    .home-final-ctas .fc-form { background: var(--navy); color: #fff; padding: 16px 28px; border-radius: var(--radius-md); font-weight: 700; font-size: 16px; display: inline-flex; align-items: center; gap: 8px; }
+
+    @media (max-width: 900px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .about-strip { grid-template-columns: 1fr; gap: 28px; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- ═══════════════════════════════════════
-       MOBILE STICKY CTA BAR
-       (Fixed bottom, visible only on mobile)
-  ═══════════════════════════════════════ -->
-  <div class="mobile-sticky" aria-label="Quick contact">
+  <div class="mobile-sticky">
     <a href="tel:5592158724" class="mobile-call">
-      <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
       Call Now
     </a>
-    <a href="#inspection-form" class="mobile-form">Get Free Inspection</a>
+    <a href="/free-inspection/" class="mobile-form">Free Inspection</a>
   </div>
 
-  <!-- ═══════════════════════════════════════
-       HEADER — Sticky, No Navigation
-  ═══════════════════════════════════════ -->
-  <header class="site-header" role="banner">
-    <div class="container header-inner">
-      <div class="header-logos">
-        <img src="/assets/images/INF%20Roofing%20Logo.png"
-             alt="Infinite Roofing Solutions">
-        <img src="/assets/images/Roofmaxx%205%20Star%20Certified%20Dealer.png"
-             alt="Authorized RoofMaxx Dealer">
+  <header class="site-nav">
+    <div class="container site-nav-inner">
+      <a href="/" class="site-nav-logo"><img src="/assets/images/INF%20Roofing%20Logo.png" alt="Infinite Roofing Solutions"></a>
+      <nav class="site-nav-links" aria-label="Main navigation">
+        <a href="/" class="active">Home</a>
+        <a href="/roofmaxx/">RoofMaxx</a>
+        <a href="/roof-repairs/">Repairs</a>
+        <a href="/re-roofing/">Re-Roofing</a>
+        <a href="/service-areas/">Service Areas</a>
+        <a href="/about/">About</a>
+        <a href="/faqs/">FAQs</a>
+      </nav>
+      <div class="site-nav-right">
+        <a href="tel:5592158724" class="site-nav-phone">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          (559) 215-8724
+        </a>
+        <a href="/free-inspection/" class="site-nav-cta">Free Inspection</a>
       </div>
-      <a href="tel:5592158724" class="header-phone" aria-label="Call (559) 215-8724 for a free inspection">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-        <span class="phone-num">(559) 215-8724</span>
-        <span class="phone-label">Call Now - Free Inspection</span>
-      </a>
+      <button class="site-nav-toggle" aria-label="Open menu" onclick="document.getElementById('siteMobileNav').classList.toggle('open');document.getElementById('siteNavOverlay').classList.toggle('open')">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="3" x2="21" y1="6" y2="6"/><line x1="3" x2="21" y1="12" y2="12"/><line x1="3" x2="21" y1="18" y2="18"/></svg>
+      </button>
     </div>
   </header>
+  <div class="site-nav-overlay" id="siteNavOverlay" onclick="this.classList.remove('open');document.getElementById('siteMobileNav').classList.remove('open')"></div>
+  <nav class="site-mobile-nav" id="siteMobileNav">
+    <a href="/">Home</a>
+    <a href="/roofmaxx/">RoofMaxx</a>
+    <a href="/roof-repairs/">Repairs</a>
+    <a href="/re-roofing/">Re-Roofing</a>
+    <a href="/service-areas/">Service Areas</a>
+    <a href="/about/">About</a>
+    <a href="/faqs/">FAQs</a>
+    <a href="/contact/">Contact</a>
+    <a href="tel:5592158724" class="mobile-phone-link">(559) 215-8724 — Call Now</a>
+    <a href="/free-inspection/" class="mobile-cta-link">Get Free Inspection</a>
+  </nav>
 
-  <!-- ═══════════════════════════════════════
-       SECTION 1: HERO (Above the Fold)
-  ═══════════════════════════════════════ -->
-  <section class="hero" aria-label="Main message">
-    <div class="container hero-container">
-
-      <div class="hero-content">
-        <span class="eyebrow">For California Homeowners Who've Been Told They Need a New Roof</span>
-
-        <h1>Why Does Every Roofer Who Looks at Your Roof Recommend a $40,000 Replacement?</h1>
-
-        <p class="hero-sub">Because they don't make money telling you your roof is fine. We do. We'll inspect your roof free and tell you the truth, even if that truth is that we can't help you.</p>
-
-        <div class="trust-badges">
-          <div class="trust-badge">
-            <svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-            <span>BBB A+ Rated</span>
-          </div>
-          <div class="trust-badge">
-            <svg class="badge-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <span>4.9 Stars (500+ Reviews)</span>
-          </div>
-          <div class="trust-badge">
-            <svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            <span>Licensed &amp; Insured</span>
-          </div>
-          <div class="trust-badge">
-            <img src="/assets/images/Roofmaxx%205%20Star%20Certified%20Dealer.png"
-                 alt="RoofMaxx Certified Dealer"
-                 class="badge-logo">
-            <span>Certified Dealer</span>
-          </div>
-        </div>
-
-        <div class="hero-actions">
-          <a href="#inspection-form" class="btn btn-lg">Get Your Free Honest Inspection &rarr;</a>
-          <div class="hero-phone-block">
-            <span class="hero-or">Or call now:</span>
-            <a href="tel:5592158724" class="hero-phone-num">(559) 215-8724</a>
-            <span class="hero-hours">We answer 7 days a week, 7am-7pm</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero-image-wrap">
-        <picture>
-          <source srcset="/assets/images/roofmaxx-clovis-hero-restoration.webp" type="image/webp">
-          <img src="/assets/images/roofmaxx-clovis-hero-restoration.jpg"
-               alt="California homeowners who saved thousands with roof restoration"
-               class="hero-image"
-               loading="eager"
-               fetchpriority="high">
-        </picture>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════
-       SECTION 2: CREDIBILITY BAR
-  ═══════════════════════════════════════ -->
-  <section class="cred-bar" aria-label="Credentials">
+  <!-- HERO -->
+  <section class="home-hero">
     <div class="container">
-      <div class="cred-grid">
-        <div class="cred-item reveal delay-1">
-          <span class="cred-num">100,000+</span>
-          <span class="cred-lbl">Nationwide</span>
-        </div>
-        <div class="cred-item reveal delay-1">
-          <span class="cred-num">15+ Years</span>
-          <span class="cred-lbl">Proven Technology</span>
-        </div>
-        <div class="cred-item reveal delay-2">
-          <span class="cred-num">4.9&#9733;</span>
-          <span class="cred-lbl">500+ Verified Reviews</span>
-        </div>
-        <div class="cred-item reveal delay-2">
-          <span class="cred-num">BioPreferred</span>
-          <span class="cred-lbl">Certified Product</span>
-        </div>
-        <div class="cred-item reveal delay-3">
-          <span class="cred-num">5 Years</span>
-          <span class="cred-lbl">Fully Transferable</span>
-        </div>
+      <span class="eyebrow">Fresno &middot; Clovis &middot; Madera &middot; Central Valley</span>
+      <h1>Honest Roofing. Real Options. No Pressure.</h1>
+      <p class="lead">Your roof doesn't always need replacing. Sometimes a repair fixes it. Sometimes RoofMaxx rejuvenation gets you another 10–15 years. Sometimes a full re-roof really is the right call. We'll tell you which — and back it up with a CSLB-licensed crew, manufacturer-certified installs, and a written warranty.</p>
+      <div class="home-hero-ctas">
+        <a href="tel:5592158724" class="btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          Call (559) 215-8724
+        </a>
+        <a href="/free-inspection/" class="btn-outline">Get a Free Inspection &rarr;</a>
       </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════
-       SECTION 3: THE PROBLEM
-  ═══════════════════════════════════════ -->
-  <section class="section section-alt">
-    <div class="container">
-      <h2 class="section-heading text-center reveal">
-        Here&rsquo;s What the $40-Billion Roofing Industry<br>Doesn&rsquo;t Want You to Know
-      </h2>
-
-      <div class="problem-intro reveal">
-        <p>For 50 years, homeowners have faced an impossible choice: pay $40,000 for a new roof, or close your eyes and pray yours holds together.</p>
-        <p>The roofing industry likes it that way. They make money on tear-offs and replacements. They don't make money telling you your roof is fine. So they don't.</p>
-        <p>Every year, thousands of homeowners pay $40,000 for roofs that didn't need replacing. They never find out, because you can't un-replace a roof. The money is gone. And the contractor who took it? He's already moved on to the next $40,000 job.</p>
-        <p class="problem-callout">If that makes your blood boil, good. It should.</p>
-      </div>
-
-      <div class="problem-cards">
-        <div class="problem-card reveal delay-1">
-          <div class="problem-card-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          </div>
-          <h3>They See Your Retirement Account</h3>
-          <p>A roofer looks at a 76-year-old homeowner and sees one thing: $40,000 in savings they want to transfer to their bank account. They know you've spent 38 years building equity in your home. And they know one sales pitch can take a big chunk of it.</p>
-        </div>
-        <div class="problem-card reveal delay-2">
-          <div class="problem-card-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
-          </div>
-          <h3>They Count on Your Trust</h3>
-          <p>After decades of dealing with honest tradespeople, you expect contractors to tell the truth. Roofers know this. They use your trust against you, recommending replacements that aren't necessary because they know you won't question an "expert."</p>
-        </div>
-        <div class="problem-card reveal delay-3">
-          <div class="problem-card-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-          </div>
-          <h3>They Target Homeowners Like You</h3>
-          <p>Single car in the driveway. Well-maintained garden. Home that&rsquo;s been cared for 40 years. To you, that&rsquo;s your life&rsquo;s work. To some contractors, that&rsquo;s a $40,000 opportunity with no one to push back.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════
-       SECTION 4: THE 85% REVELATION
-  ═══════════════════════════════════════ -->
-  <section class="revelation">
-    <div class="container">
-      <div class="rev-layout">
-
-        <div class="rev-stat reveal">
-          <div class="rev-pct">85%</div>
-          <div class="rev-rule"></div>
-          <p class="rev-stat-copy">of roofs recommended for replacement don&rsquo;t actually need to be replaced.</p>
-        </div>
-
-        <div class="rev-body reveal delay-2">
-          <p><strong>Read that again. Eighty-five percent.</strong></p>
-          <p>Your shingles aren't failing because they're old. They're failing because they've lost the natural oils that keep them flexible and waterproof. Those oils dry out over time due to sun, rain, and temperature changes.</p>
-          <p>A roofing contractor sees this and says, "Time for a new roof."</p>
-          <p>But here&rsquo;s what they don&rsquo;t tell you: <strong>Those oils can be restored.</strong></p>
-          <p>In about two hours. For $5,200. Extending your roof&rsquo;s life by up to 15 years.</p>
-          <p class="rev-closer">The roofing industry has known about this for years.<br>They just hope you never find out.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════
-       SECTION 5: THE SOLUTION (RoofMaxx)
-  ═══════════════════════════════════════ -->
-  <section class="section">
-    <div class="container">
-      <h2 class="section-heading text-center reveal">
-        Introducing RoofMaxx:<br>The $5,200 Alternative to a $40,000 Replacement
-      </h2>
-
-      <div class="sln-grid">
-        <div class="sln-text reveal">
-          <h3>What Is RoofMaxx?</h3>
-          <p>RoofMaxx is a roof restoration treatment that does something no traditional roofer can do: it actually restores your shingles instead of tearing them off.</p>
-
-          <h3>How It Works</h3>
-          <p>Asphalt shingles contain natural oils that keep them flexible and waterproof. Over time, these oils dry out, causing shingles to become brittle, crack, and lose their protective granules.</p>
-          <p>RoofMaxx is a plant-based treatment that penetrates your shingles and replenishes those lost oils. It&rsquo;s the same technology used in award-winning Goodyear tires, adapted for roofing.</p>
-          <p>The treatment is sprayed directly onto your existing roof. It absorbs in about 30 minutes. The entire process takes roughly two hours, with no mess, no tear-off, and no crew tramping through your home for a week.</p>
-
-          <h3>The Result</h3>
-          <p>Your shingles regain their flexibility and waterproofing ability. Your roof is protected for another 5 years per treatment. With up to three treatments, you can add up to 15 years to your roof&rsquo;s life.</p>
-          <p class="sln-price-line"><strong>Cost: $5,200. Not $40,000.</strong></p>
-          <p class="sln-local">Infinite Roofing Solutions is your local certified RoofMaxx dealer, bringing this technology to California homeowners.</p>
-        </div>
-        <div class="sln-media reveal delay-2">
-          <picture>
-            <source srcset="/assets/images/roofmaxx-clovis-about-technician.webp" type="image/webp">
-            <img src="/assets/images/roofmaxx-clovis-about-technician.jpg"
-                 alt="RoofMaxx technician applying treatment"
-                 loading="lazy">
-          </picture>
-        </div>
-      </div>
-
-      <div class="benefit-cards">
-        <div class="benefit-card reveal delay-1">
-          <div class="benefit-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          </div>
-          <h4>Save Up to $34,800</h4>
-          <p>Restoration costs $5,200. Replacement costs $40,000. You keep the difference.</p>
-        </div>
-        <div class="benefit-card reveal delay-2">
-          <div class="benefit-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          </div>
-          <h4>Done in 2 Hours</h4>
-          <p>No week-long construction project. No noise. No mess. No disruption to your life.</p>
-        </div>
-        <div class="benefit-card reveal delay-3">
-          <div class="benefit-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-          </div>
-          <h4>5-Year Warranty</h4>
-          <p>Fully transferable if you sell. We stand behind our work because it works.</p>
-        </div>
-        <div class="benefit-card reveal delay-1">
-          <div class="benefit-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75"/></svg>
-          </div>
-          <h4>Eco-Friendly</h4>
-          <p>USDA BioPreferred product. Keep 1,000+ lbs of shingles out of the landfill.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════
-       SECTION 6: THE MATH COMPARISON
-  ═══════════════════════════════════════ -->
-  <section class="section section-alt">
-    <div class="container">
-      <h2 class="section-heading text-center reveal">The Math Your Roofer Hopes You Never Do</h2>
-      <p class="section-sub text-center reveal">Two ways to get 15 more years from your roof. Only one costs $40,000.</p>
-
-      <div class="math-cols">
-        <div class="math-col math-bad reveal delay-1">
-          <div class="math-col-head math-head-bad">
-            <span class="math-label">Option A</span>
-            <span class="math-title">Replacement</span>
-          </div>
-          <div class="math-col-body">
-            <div class="math-row">
-              <span>New roof now</span>
-              <span class="math-amt">$40,000</span>
-            </div>
-            <div class="math-row math-total math-total-bad">
-              <span>Total for 15 Years</span>
-              <span class="math-amt">$40,000</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="math-col math-good reveal delay-2">
-          <div class="math-col-head math-head-good">
-            <span class="math-label">Option B</span>
-            <span class="math-title">RoofMaxx Restoration</span>
-          </div>
-          <div class="math-col-body">
-            <div class="math-row">
-              <span>RoofMaxx treatment now</span>
-              <span class="math-amt">$5,200</span>
-            </div>
-            <div class="math-row">
-              <span>RoofMaxx treatment in 5 years</span>
-              <span class="math-amt">$5,200</span>
-            </div>
-            <div class="math-row">
-              <span>RoofMaxx treatment in 10 years</span>
-              <span class="math-amt">$5,200</span>
-            </div>
-            <div class="math-row math-total math-total-good">
-              <span>Total for 15 Years</span>
-              <span class="math-amt">$15,600</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="math-savings reveal">
-        <div class="math-savings-eyebrow">Your Savings</div>
-        <div class="math-savings-num">$24,400</div>
-        <div class="math-savings-note">Or $34,800 if you only need one treatment before selling or moving.</div>
-      </div>
-
-      <div class="math-meaning reveal">
-        <p class="math-meaning-head">What could you do with $24,400?</p>
-        <ul class="math-meaning-list">
-          <li>4+ years of property taxes</li>
-          <li>A year of groceries</li>
-          <li>A trip to see the grandchildren</li>
-          <li>Money that stays in your retirement account</li>
-          <li>An inheritance your children actually receive</li>
-        </ul>
-        <p class="math-meaning-close">Your roofer would rather have it. We think you should keep it.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════
-       MID-PAGE CTA
-  ═══════════════════════════════════════ -->
-  <section class="section mid-cta-section">
-    <div class="container">
-      <div class="mid-cta-box reveal">
-        <h2>Ready to Find Out If Your Roof Qualifies?</h2>
-        <div class="mid-cta-actions">
-          <a href="#inspection-form" class="btn btn-lg">Get Your Free Inspection &rarr;</a>
-          <span class="mid-or">or call <a href="tel:5592158724">(559) 215-8724</a></span>
-        </div>
-        <div class="mid-reassurance">
-          <span>Free inspection</span>
-          <span>No pressure</span>
-          <span>Honest answer</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════
-       SECTION 7: TESTIMONIALS
-  ═══════════════════════════════════════ -->
-  <section class="section section-alt testimonials">
-    <div class="container">
-      <h2 class="section-heading text-center reveal">
-        What California Homeowners Are Saying<br>About Infinite Roofing Solutions
-      </h2>
-
-      <div class="test-grid">
-        <div class="test-card reveal delay-1">
-          <div class="test-qmark" aria-hidden="true">&ldquo;</div>
-          <div class="test-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="test-quote">"I'd gotten three quotes for roof replacement. All around $40,000. I was about to write the check when my daughter found Infinite Roofing Solutions online.<br><br>I was skeptical, honestly. But they came out, inspected my roof, and told me it was a perfect candidate for the RoofMaxx treatment. $5,200 instead of $40,000.<br><br>What really convinced me was this: they said if my roof had needed replacement, they would have told me. They don't do replacements. They had no reason to lie.<br><br>It's been two years now. Roof is holding up beautifully. And I still have $35,000 in my retirement account."</p>
-          <div class="test-attribution">
-            <span class="test-author">Robert T.</span>
-            <span class="test-detail">Fremont &middot; 42-year homeowner</span>
-          </div>
-        </div>
-
-        <div class="test-card reveal delay-2">
-          <div class="test-qmark" aria-hidden="true">&ldquo;</div>
-          <div class="test-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="test-quote">"After my husband passed, I couldn't face a $40,000 decision alone. Every contractor who came out recommended replacement. I didn't know who to trust.<br><br>Infinite Roofing Solutions was different. They inspected my roof, explained everything clearly, and even offered to have my daughter there for the explanation. They said my roof could be restored for $5,200.<br><br>They treated me with respect, not like a target. That meant everything."</p>
-          <div class="test-attribution">
-            <span class="test-author">Margaret D.</span>
-            <span class="test-detail">Oakland &middot; 38-year homeowner</span>
-          </div>
-        </div>
-
-        <div class="test-card reveal delay-3">
-          <div class="test-qmark" aria-hidden="true">&ldquo;</div>
-          <div class="test-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="test-quote">"I'm a retired engineer. I'm skeptical of everything. So when I heard about roof restoration, I did my research.<br><br>The RoofMaxx science is real. It's the same soy-based technology used in high-performance tires. The treatment is USDA-certified. And Infinite Roofing Solutions has been applying it with great results.<br><br>I had it done. Cost me $5,200 instead of the $42,000 quote I'd gotten. And my engineer brain says it was the smart decision."</p>
-          <div class="test-attribution">
-            <span class="test-author">James L.</span>
-            <span class="test-detail">Berkeley &middot; 35-year homeowner</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════
-       SECTION 8: HOW IT WORKS
-  ═══════════════════════════════════════ -->
-  <section class="section">
-    <div class="container">
-      <h2 class="section-heading text-center reveal">What to Expect: From First Call to Protected Roof</h2>
-
-      <div class="process-grid">
-        <div class="process-step reveal delay-1">
-          <div class="step-num" aria-hidden="true">1</div>
-          <h4>Schedule Your Free Inspection</h4>
-          <p>Call Infinite Roofing Solutions or fill out the form. We'll schedule a time that works for you. Inspections take about 15-20 minutes. You're welcome to have your spouse, adult child, or anyone else there with you.</p>
-        </div>
-        <div class="process-step reveal delay-2">
-          <div class="step-num" aria-hidden="true">2</div>
-          <h4>Honest Roof Assessment</h4>
-          <p>Our inspector will examine your roof and tell you exactly what they find. If your roof is a candidate for RoofMaxx restoration, we'll explain how and why. If it's not, we'll tell you that too, and recommend you call a reputable roofer. We have no reason to lie.</p>
-        </div>
-        <div class="process-step reveal delay-3">
-          <div class="step-num" aria-hidden="true">3</div>
-          <h4>Your Decision, No Pressure</h4>
-          <p>We'll give you a written assessment and quote. Take all the time you need to decide. Talk it over with your family. Get a second opinion. We'll never pressure you. When you're ready, we're here.</p>
-        </div>
-        <div class="process-step reveal delay-1">
-          <div class="step-num" aria-hidden="true">4</div>
-          <h4>Treatment Day (About 2 Hours)</h4>
-          <p>Our certified technician arrives, applies the RoofMaxx treatment, and you're done. No tear-off. No construction noise. No mess. No disruption. Just a protected roof and the peace of mind that comes with it.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════
-       SECTION 9: WHY TRUST US
-  ═══════════════════════════════════════ -->
-  <section class="section section-alt">
-    <div class="container">
-      <h2 class="section-heading text-center reveal">
-        Why You Can Trust Infinite Roofing Solutions<br>(When You Can&rsquo;t Trust Anyone Else)
-      </h2>
-
-      <div class="trust-msg reveal">
-        <p>Here&rsquo;s something no roofing contractor will ever say to you:</p>
-        <blockquote class="trust-blockquote">
-          &ldquo;We don&rsquo;t do roof replacements. We can&rsquo;t profit from telling you that you need one.&rdquo;
-        </blockquote>
-        <p>Think about what that means.</p>
-        <p>When a roofer inspects your roof, they make $40,000 if they convince you to replace. They make $0 if they tell you the truth.</p>
-        <p>When we inspect your roof, we make $5,200 if RoofMaxx restoration is right for you. We make $0 if it's not, because we don't do replacements.</p>
-        <p><strong>We have exactly one incentive: to tell you the truth.</strong></p>
-        <p>If your roof can be saved, we'll tell you how.<br>If it can't, we'll tell you that too, and recommend you call someone else.</p>
-        <p class="trust-closer">When's the last time a contractor told you to call someone else?</p>
-      </div>
-
-      <div class="trust-compare reveal">
-        <div class="tc-col tc-bad">
-          <div class="tc-head tc-head-bad">What Traditional Roofers Do</div>
-          <ul>
-            <li><span class="tc-mark tc-x" aria-hidden="true">&#10007;</span> Profit $40,000 from replacement</li>
-            <li><span class="tc-mark tc-x" aria-hidden="true">&#10007;</span> Incentivized to recommend replacement</li>
-            <li><span class="tc-mark tc-x" aria-hidden="true">&#10007;</span> Don&rsquo;t mention restoration alternatives</li>
-            <li><span class="tc-mark tc-x" aria-hidden="true">&#10007;</span> Pressure tactics and limited-time offers</li>
-            <li><span class="tc-mark tc-x" aria-hidden="true">&#10007;</span> Move on to the next $40,000 sale</li>
-          </ul>
-        </div>
-        <div class="tc-col tc-good">
-          <div class="tc-head tc-head-good">What Infinite Roofing Solutions Does</div>
-          <ul>
-            <li><span class="tc-mark tc-check" aria-hidden="true">&#10003;</span> Profit $5,200 from restoration (when appropriate)</li>
-            <li><span class="tc-mark tc-check" aria-hidden="true">&#10003;</span> Incentivized to tell the truth</li>
-            <li><span class="tc-mark tc-check" aria-hidden="true">&#10003;</span> Tell you if replacement is actually needed</li>
-            <li><span class="tc-mark tc-check" aria-hidden="true">&#10003;</span> No pressure, take your time to decide</li>
-            <li><span class="tc-mark tc-check" aria-hidden="true">&#10003;</span> Build relationships based on honesty</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════
-       SECTION 10: FAQ
-  ═══════════════════════════════════════ -->
-  <section class="section faq-section">
-    <div class="container">
-      <h2 class="section-heading text-center reveal">Your Questions, Answered Honestly</h2>
-
-      <div class="faq-list reveal">
-
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">How do I know if my roof qualifies for restoration?</button>
-          <div class="faq-a" role="region">
-            <p>That's exactly what our free inspection determines. Generally, roofs that are 5-30 years old with less than 30% granule loss are good candidates. If your roof has widespread structural damage, missing shingles, or active leaks from storm damage, you may need replacement. We'll tell you honestly which category you're in.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">Is RoofMaxx the same thing as a roof coating or sealant?</button>
-          <div class="faq-a" role="region">
-            <p>No. Coatings and sealants sit on top of your shingles like paint. RoofMaxx penetrates INTO your shingles, restoring the oils from the inside out. It doesn't change your roof's appearance, won't crack or peel, and actually makes your shingles flexible again.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">How long does the RoofMaxx treatment last?</button>
-          <div class="faq-a" role="region">
-            <p>Each treatment extends your roof's life by up to 5 years. With up to three treatments (applied every 5 years), you can add up to 15 years to your roof's total lifespan.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">What if I'm planning to sell my home?</button>
-          <div class="faq-a" role="region">
-            <p>The 5-year warranty is fully transferable to the new owner. This can actually be a selling point, giving buyers confidence in the roof's condition and potentially adding value to your home.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">Is RoofMaxx safe? What about my plants and pets?</button>
-          <div class="faq-a" role="region">
-            <p>Yes. RoofMaxx is a USDA BioPreferred product made from plant-based materials. It's non-toxic, non-flammable, and safe for people, pets, plants, and the environment. It can be rinsed off any surface it contacts.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">What if you inspect my roof and I don't want to move forward?</button>
-          <div class="faq-a" role="region">
-            <p>That's completely fine. The inspection is free with no obligation. We'll give you our honest assessment, answer your questions, and leave you with the information you need to make your own decision. No pressure, ever.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">How do I know you're not just another company trying to sell me something?</button>
-          <div class="faq-a" role="region">
-            <p>Because we can't sell you the expensive thing. Infinite Roofing Solutions doesn't do roof replacements. If your roof needs replacing, we literally cannot help you, and we'll tell you to call someone else. Our only option is the $5,200 RoofMaxx restoration. We have no financial incentive to recommend anything other than what's actually right for your roof.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">Is this treatment proven? How long has it been around?</button>
-          <div class="faq-a" role="region">
-            <p>The science behind RoofMaxx has been proven for over 15 years. The treatment uses soy methyl ester emulsion (SMEE) technology, the same chemistry used in high-performance Goodyear tires. Over 100,000 roofs have been treated nationwide. Independent lab tests confirm improvements in flexibility, water resistance, and even fire resistance.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">Who is Infinite Roofing Solutions?</button>
-          <div class="faq-a" role="region">
-            <p>Infinite Roofing Solutions is your local certified RoofMaxx dealer serving the Bay Area, Sacramento, and Central Valley regions of California. We're licensed, insured, and A+ rated with the BBB. We live in the communities we serve, and our reputation depends on treating our neighbors honestly.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════
-       SECTION 11: FINAL CTA + FORM
-  ═══════════════════════════════════════ -->
-  <section class="final-cta" id="inspection-form">
-    <div class="container">
-
-      <div class="final-cta-header text-center reveal">
-        <h2>Ready for an Honest Answer About Your Roof?</h2>
-        <p class="final-sub">
-          Free inspection from Infinite Roofing Solutions. No pressure. No obligation.<br>
-          Just the truth, from the only people with nothing to gain from lying to you.
-        </p>
-      </div>
-
-      <div class="form-cols">
-
-        <div class="form-wrap reveal delay-1">
-          <img src="/assets/images/INF%20Roofing%20Logo.png"
-               alt="Infinite Roofing Solutions"
-               class="form-logo"
-               loading="lazy">
-          <h3>Request Your Free Inspection</h3>
-          <p class="form-note">You&rsquo;re welcome to have a family member present. We&rsquo;ll give everyone the same honest answer.</p>
-          <form novalidate>
-            <input type="hidden" name="source" value="homepage">
-            <input type="hidden" name="page_url" value="/">
-            <div class="grid-2">
-              <div class="form-group">
-                <label for="fname">First Name</label>
-                <input type="text" id="fname" name="fname" required placeholder="First Name" autocomplete="given-name">
-              </div>
-              <div class="form-group">
-                <label for="lname">Last Name</label>
-                <input type="text" id="lname" name="lname" required placeholder="Last Name" autocomplete="family-name">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="phone">Phone Number</label>
-              <input type="tel" id="phone" name="phone" required placeholder="Phone Number" autocomplete="tel">
-            </div>
-            <div class="form-group">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" placeholder="Email Address (optional)" autocomplete="email">
-            </div>
-            <div class="form-group">
-              <label for="address">Street Address</label>
-              <input type="text" id="address" name="address" required placeholder="Street Address" autocomplete="street-address">
-            </div>
-            <div class="grid-2">
-              <div class="form-group">
-                <label for="city">City</label>
-                <input type="text" id="city" name="city" required placeholder="City" autocomplete="address-level2">
-              </div>
-              <div class="form-group">
-                <label for="zip">ZIP Code</label>
-                <input type="text" id="zip" name="zip" required placeholder="ZIP Code" autocomplete="postal-code">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="calltime">Best Time to Call</label>
-              <select id="calltime" name="calltime">
-                <option value="">Best Time to Reach You</option>
-                <option value="morning">Morning</option>
-                <option value="afternoon">Afternoon</option>
-                <option value="evening">Evening</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="comments">Anything Else We Should Know?</label>
-              <textarea id="comments" name="comments" rows="3" placeholder="Anything else we should know?"></textarea>
-            </div>
-            <button type="submit" class="btn form-submit-btn">Get My Free Inspection &rarr;</button>
-          </form>
-        </div>
-
-        <div class="phone-wrap reveal delay-2">
-          <h3>Prefer to Call?</h3>
-          <p>Talk to a real person at Infinite Roofing Solutions right now. No phone trees. No waiting on hold. Just a friendly voice ready to answer your questions and schedule your free inspection.</p>
-          <a href="tel:5592158724" class="big-phone">(559) 215-8724</a>
-          <p class="phone-hours">We answer 7 days a week<br>7am-7pm Pacific Time</p>
-          <p class="phone-next-label">What Happens Next:</p>
-          <ul class="phone-list">
-            <li>We'll answer your questions</li>
-            <li>We'll schedule a time that works for you</li>
-            <li>Our inspector will arrive on time and assess your roof</li>
-            <li>You'll get an honest answer, no pressure</li>
-          </ul>
-          <div class="phone-trust-badges">
-            <span>&#10003; Certified RoofMaxx Dealer</span>
-            <span>&#10003; BBB A+ Rated</span>
-            <span>&#10003; Licensed &amp; Insured</span>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="form-safe-row">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        <p><strong>Your Information Is Safe</strong><br>We'll never sell, share, or spam you. Your information is used only to schedule your free inspection. That's it.</p>
-      </div>
-
-      <div class="form-trust-row" aria-label="Trust badges">
-        <img src="/assets/images/INF%20Roofing%20Logo.png"
-             alt="Infinite Roofing Solutions"
-             class="form-trust-logo"
-             loading="lazy">
-        <img src="/assets/images/Roofmaxx%205%20Star%20Certified%20Dealer.png"
-             alt="Certified RoofMaxx Dealer"
-             class="form-trust-badge"
-             loading="lazy">
+      <div class="home-hero-badges">
+        <span>&#9733; California's Only 5-Star Certified RoofMaxx Dealer</span>
+        <span>CSLB #1126804</span>
+        <span>GAF &amp; Owens Corning Certified</span>
         <span>BBB A+ Rated</span>
-        <span>Licensed &amp; Insured</span>
+        <span>Licensed &middot; Bonded &middot; Insured</span>
       </div>
-
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════
-       FOOTER
-  ═══════════════════════════════════════ -->
-  <footer class="site-footer" role="contentinfo">
+  <!-- SERVICES OVERVIEW -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-heading text-center reveal">Three Services. One Honest Recommendation.</h2>
+      <p class="section-sub text-center reveal">Most roofing companies only sell one thing — replacement. We offer three, because your roof deserves the right answer, not the biggest invoice.</p>
+      <div class="services-grid">
+        <div class="service-card reveal delay-1">
+          <span class="svc-tag">Save Your Roof</span>
+          <h3>RoofMaxx Rejuvenation</h3>
+          <p>Extend asphalt-shingle roof life by 5–15 years for a fraction of replacement cost. Plant-based bio-oil restores flexibility to dried-out shingles. Backed by a transferable warranty. The first option we check — because if it works, it saves you thousands.</p>
+          <a href="/roofmaxx/" class="svc-link">Learn About RoofMaxx &rarr;</a>
+        </div>
+        <div class="service-card reveal delay-2">
+          <span class="svc-tag">Fix What's Broken</span>
+          <h3>Roof Repairs</h3>
+          <p>Leak repairs, flashing, ridge cap, wind damage, vent boots, skylights, and storm response. We find the actual cause, not the obvious symptom. Honest diagnostics, transparent pricing, and a workmanship warranty in writing.</p>
+          <a href="/roof-repairs/" class="svc-link">See Repair Services &rarr;</a>
+        </div>
+        <div class="service-card reveal delay-3">
+          <span class="svc-tag">Done Right, Once</span>
+          <h3>Re-Roofing &amp; Replacement</h3>
+          <p>GAF Timberline, Owens Corning Duration, clay tile, and flat-roof systems. Proper tear-off, deck inspection, premium underlayment, new flashing — installed to manufacturer spec. Financing available. We only recommend replacement when it's actually the right move.</p>
+          <a href="/re-roofing/" class="svc-link">Re-Roofing Options &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT STRIP -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="about-strip reveal">
+        <div>
+          <h2>Central Valley Roofing, Done With Respect.</h2>
+          <p>Infinite Roofing Solutions was built on a simple idea: tell the homeowner the truth. We're based in Fresno, licensed by the CSLB, and we've served families across the Central Valley — Clovis, Madera, Visalia, Selma, Hanford, Tulare — for years.</p>
+          <p>We're the only 5-Star Certified RoofMaxx dealer in California. That means manufacturer-level training, documented quality, and the highest performance tier in the RoofMaxx network. Combined with GAF and Owens Corning certifications for replacement work, we can look at any Central Valley roof and give you the honest path forward.</p>
+          <a href="/about/" class="about-link">Meet the Team &rarr;</a>
+        </div>
+        <div class="about-facts">
+          <h3>The Shortlist</h3>
+          <ul>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span><strong>CSLB Licensed #1126804</strong> — fully bonded and insured California contractor.</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span><strong>California's Only 5-Star Certified RoofMaxx Dealer</strong> — highest tier in the network.</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span><strong>GAF &amp; Owens Corning Certified Installer</strong> — unlocks top manufacturer warranties.</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span><strong>BBB A+ Accredited</strong> — no unresolved complaints, verified reputation.</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span><strong>OSHA-Trained Crews</strong> — every crew member, every job.</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Written Workmanship Warranty</strong> — beyond the manufacturer coverage.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GOOGLE REVIEWS -->
+  <section class="section reviews-section">
+    <div class="container">
+      <div class="reviews-head reveal">
+        <div class="reviews-stars-big">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <h2 class="section-heading" style="margin-bottom:10px;">What Central Valley Homeowners Say</h2>
+        <p class="reviews-summary">Real Google reviews from <strong>Fresno, Clovis, Madera</strong>, and surrounding communities. We've earned every star one honest recommendation at a time.</p>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card reveal delay-1">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">"I called three roofers for quotes. Two told me I needed a full replacement. Infinite came out, spent an hour on my roof, and told me RoofMaxx would give me another decade. They saved me over $18,000 and the roof looks great. Honest people are hard to find — these guys are the real deal."</p>
+          <div class="review-author">
+            <div><strong>Miguel R.</strong><br><span>Fresno, CA</span></div>
+            <div class="review-google-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="#4285F4"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z"/></svg>Google</div>
+          </div>
+        </div>
+        <div class="review-card reveal delay-2">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">"Storm took out part of our roof in Clovis last spring. Infinite's crew was on-site the next morning, tarped the damage, worked with our insurance adjuster, and had the whole roof replaced within a week. GAF shingles, clean job, full magnetic nail sweep at the end. Professional from start to finish."</p>
+          <div class="review-author">
+            <div><strong>Deborah K.</strong><br><span>Clovis, CA</span></div>
+            <div class="review-google-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="#4285F4"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z"/></svg>Google</div>
+          </div>
+        </div>
+        <div class="review-card reveal delay-3">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">"Had a persistent leak around the chimney flashing. Two other companies quoted replacement. Infinite's tech traced it to failed flashing, did the repair in an afternoon, and it's been bone-dry through two rainy seasons. Fair price, no upsell, no pressure. Exactly what I wanted."</p>
+          <div class="review-author">
+            <div><strong>James T.</strong><br><span>Madera, CA</span></div>
+            <div class="review-google-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="#4285F4"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z"/></svg>Google</div>
+          </div>
+        </div>
+        <div class="review-card reveal delay-1">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">"My parents are in their 80s and I was worried they'd get taken advantage of. I had Infinite come out for a second opinion after another contractor quoted them $24,000. Turns out the roof just needed minor repairs and a RoofMaxx treatment. These guys treated my folks with real respect. That meant the world."</p>
+          <div class="review-author">
+            <div><strong>Sandra L.</strong><br><span>Selma, CA</span></div>
+            <div class="review-google-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="#4285F4"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z"/></svg>Google</div>
+          </div>
+        </div>
+        <div class="review-card reveal delay-2">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">"Full re-roof on our Spanish-tile home in northwest Fresno. They matched the tile color perfectly, replaced all the underlayment, and redid the ridge properly. Three-day job, on budget, and the crew cleaned up like they were never there. Warranty is in writing. Would hire again tomorrow."</p>
+          <div class="review-author">
+            <div><strong>Raymond &amp; Evelyn P.</strong><br><span>Fresno, CA</span></div>
+            <div class="review-google-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="#4285F4"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z"/></svg>Google</div>
+          </div>
+        </div>
+        <div class="review-card reveal delay-3">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">"I asked a lot of dumb questions because I don't know anything about roofs. The guy who came out walked me through every single option, sent photos from the roof, and never once made me feel rushed. Ended up doing the RoofMaxx treatment and couldn't be happier. Zero pressure sales — just good people."</p>
+          <div class="review-author">
+            <div><strong>Anita V.</strong><br><span>Visalia, CA</span></div>
+            <div class="review-google-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="#4285F4"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z"/></svg>Google</div>
+          </div>
+        </div>
+      </div>
+      <div class="reviews-cta-wrap">
+        <a href="https://share.google/nvHHBv3VHwcXVKrau" target="_blank" rel="noopener" class="reviews-cta">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#4285F4"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z"/></svg>
+          See All Reviews on Google &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE AREAS -->
+  <section class="areas-band">
+    <div class="container reveal">
+      <h2>Serving the Entire Central Valley</h2>
+      <p>Based in Fresno, covering the communities we've worked in since day one. If your home is in the Central Valley, we're close enough to be on your roof tomorrow — and close enough to stand behind our work for the long haul.</p>
+      <div class="areas-chips">
+        <span>Fresno</span>
+        <span>Clovis</span>
+        <span>Madera</span>
+        <span>Visalia</span>
+        <span>Selma</span>
+        <span>Hanford</span>
+        <span>Tulare</span>
+        <span>Sanger</span>
+        <span>Kingsburg</span>
+        <span>Reedley</span>
+        <span>Kerman</span>
+        <span>Lemoore</span>
+      </div>
+      <a href="/service-areas/" class="areas-link">See Full Service Area Details &rarr;</a>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="home-final-cta">
+    <div class="container">
+      <h2>Ready for an Honest Look at Your Roof?</h2>
+      <p>Free inspection. No pressure. A real answer about what your roof actually needs — whether that's a repair, a RoofMaxx treatment, or a full replacement.</p>
+      <div class="home-final-ctas">
+        <a href="tel:5592158724" class="fc-phone">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          (559) 215-8724
+        </a>
+        <a href="/free-inspection/" class="fc-form">Schedule a Free Inspection &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
     <div class="container">
       <div class="foot-grid">
-
-        <div class="foot-col foot-brand">
-          <div class="foot-logos">
-            <img src="/assets/images/INF%20Roofing%20Logo.png"
-                 alt="Infinite Roofing Solutions"
-                 class="foot-logo-main"
-                 loading="lazy">
-            <img src="/assets/images/Roofmaxx%205%20Star%20Certified%20Dealer.png"
-                 alt="Certified RoofMaxx Dealer"
-                 class="foot-logo-badge"
-                 loading="lazy">
-          </div>
-          <p class="foot-tagline">We don't replace roofs. We restore them. And we tell the truth.</p>
-        </div>
-
-        <div class="foot-col">
-          <h4>Contact Us</h4>
-          <ul>
-            <li><a href="tel:5592158724">(559) 215-8724</a></li>
-            <li><a href="mailto:info@infiniteroofingsolutions.com">info@infiniteroofingsolutions.com</a></li>
-            <li>4762 W Jennifer Ave, STE 101<br>Fresno, CA 93722</li>
-            <li>7am-7pm, 7 days a week</li>
-          </ul>
-        </div>
-
-        <div class="foot-col">
-          <h4>Service Areas</h4>
-          <ul>
-            <li>Fresno County</li>
-            <li>Alameda County</li>
-            <li>Sacramento County</li>
-            <li>Contra Costa County</li>
-            <li><em>Not sure? Just call us.</em></li>
-          </ul>
-        </div>
-
-        <div class="foot-col">
-          <h4>Trust &amp; Credentials</h4>
-          <ul>
-            <li>CSLB License #1126804</li>
-            <li>BBB A+ Accredited</li>
-            <li>Certified RoofMaxx Dealer</li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Service</a></li>
-            <li><a href="#">Google Reviews</a></li>
-          </ul>
-        </div>
-
+        <div class="foot-col foot-brand"><img src="/assets/images/INF%20Roofing%20Logo.png" alt="Infinite Roofing Solutions" class="foot-logo-main"><p class="foot-tagline">We don't replace roofs we don't have to. And we tell the truth.</p></div>
+        <div class="foot-col"><h4>Services</h4><ul><li><a href="/roofmaxx/">RoofMaxx Restoration</a></li><li><a href="/roof-repairs/">Roof Repairs</a></li><li><a href="/re-roofing/">Re-Roofing</a></li><li><a href="/free-inspection/">Free Inspection</a></li></ul></div>
+        <div class="foot-col"><h4>Company</h4><ul><li><a href="/about/">About Us</a></li><li><a href="/faqs/">FAQs</a></li><li><a href="/service-areas/">Service Areas</a></li><li><a href="/contact/">Contact</a></li><li><a href="/privacy-policy/">Privacy Policy</a></li></ul></div>
+        <div class="foot-col"><h4>Contact</h4><ul><li><a href="tel:5592158724">(559) 215-8724</a></li><li>7am–7pm, 7 days a week</li><li>Fresno, CA 93722</li><li>CSLB License #1126804</li></ul></div>
       </div>
-      <div class="foot-bottom">
-        <p>&copy; 2026 Infinite Roofing Solutions. All rights reserved. Certified RoofMaxx Dealer. Licensed and Insured. CSLB License #1126804</p>
-      </div>
+      <div class="foot-bottom"><p>&copy; 2026 Infinite Roofing Solutions. All rights reserved. Licensed &amp; Insured. CSLB #1126804.</p></div>
     </div>
   </footer>
 
-  <!-- ═══════════════════════════════════════
-       SCRIPTS
-  ═══════════════════════════════════════ -->
   <script>
-    // ── FAQ Accordion ──────────────────────────────
-    document.querySelectorAll('.faq-q').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const item = btn.closest('.faq-item');
-        const isOpen = item.classList.contains('active');
-
-        // Close all others
-        document.querySelectorAll('.faq-item.active').forEach(open => {
-          open.classList.remove('active');
-          open.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
-        });
-
-        // Toggle clicked
-        if (!isOpen) {
-          item.classList.add('active');
-          btn.setAttribute('aria-expanded', 'true');
-        }
-      });
-    });
-
-    // ── Smooth Scroll with Header Offset ───────────
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        const target = document.querySelector(this.getAttribute('href'));
-        if (!target) return;
-        e.preventDefault();
-        const offset = document.querySelector('.site-header').offsetHeight + 20;
-        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-        window.scrollTo({ top, behavior: 'smooth' });
-      });
-    });
-
-    // ── Scroll Reveal ──────────────────────────────
-    const revealObs = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          revealObs.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.08,
-      rootMargin: '0px 0px -32px 0px'
-    });
-
-    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('is-visible'); obs.unobserve(e.target); }});
+    }, {threshold:0.08, rootMargin:'0px 0px -32px 0px'});
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   </script>
-
-
-  <!-- ═══════════════════════════════════════
-       PAGE CONFIG + FORM HANDLER
-       Source: homepage
-       Phone:  (559) 215-8724
-       Webhook: Paste this page's Make/Zapier URL below
-  ═══════════════════════════════════════ -->
   <script>
-    window.PAGE_CONFIG = {
-      source:       'homepage',
-      phoneRaw:     '5592158724',
-      phoneDisplay: '(559) 215-8724',
-      webhookUrl:   'https://hooks.zapier.com/hooks/catch/12412478/u7ya0f6/'
-    };
+    window.PAGE_CONFIG = { source:'homepage', phoneRaw:'5592158724', phoneDisplay:'(559) 215-8724', webhookUrl:'https://hooks.zapier.com/hooks/catch/12412478/u7ya0f6/' };
   </script>
   <script src="/assets/js/site.js?v=4"></script>
 </body>
 </html>
- 
