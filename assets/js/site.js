@@ -18,6 +18,12 @@
   // 0. META CAPI HELPERS
   // ══════════════════════════════════════════════
 
+  // True only after the visitor has explicitly accepted cookies via the
+  // consent banner. All Meta Pixel + CAPI calls are gated behind this.
+  function consentGranted() {
+    return !!(window.__consent && window.__consent.granted);
+  }
+
   // Generates a unique event ID for browser↔server deduplication.
   // Same ID is passed to fbq() and the CAPI relay function.
   function generateEventId() {
@@ -41,8 +47,10 @@
   }
 
   // Sends a server-side event to the CAPI relay. Fire-and-forget —
-  // errors are logged but never shown to the visitor.
+  // errors are logged but never shown to the visitor. Gated on consent;
+  // returns silently if the visitor has not accepted cookies.
   function sendCAPIEvent(eventName, eventId, userData, customData) {
+    if (!consentGranted()) return;
     var payload = {
       event_name:       eventName,
       event_id:         eventId,
@@ -212,24 +220,29 @@
     var eventId = (form && form._metaLeadEventId) || generateEventId();
 
     // ── Meta Pixel: Lead (browser-side, with event ID for deduplication) ──
-    if (typeof fbq === 'function') {
+    // Gated on consent — Meta is only told about the lead if the visitor
+    // accepted cookies. The Zapier webhook above (CRM/lead routing) runs
+    // regardless because that is functional/contractual, not marketing.
+    if (consentGranted() && typeof fbq === 'function') {
       fbq('track', 'Lead', {}, { eventID: eventId });
     }
 
     // ── CAPI: Lead (server-side mirror with same event ID) ──
-    var f = form || {};
-    var userData = {
-      em:  (f.querySelector && f.querySelector('[name="email"]'))  ? f.querySelector('[name="email"]').value.trim()  : '',
-      ph:  (f.querySelector && f.querySelector('[name="phone"]'))  ? f.querySelector('[name="phone"]').value.trim()  : '',
-      fn:  (f.querySelector && f.querySelector('[name="fname"]'))  ? f.querySelector('[name="fname"]').value.trim()  : '',
-      ln:  (f.querySelector && f.querySelector('[name="lname"]'))  ? f.querySelector('[name="lname"]').value.trim()  : '',
-      ct:  (f.querySelector && f.querySelector('[name="city"]'))   ? f.querySelector('[name="city"]').value.trim()   : '',
-      st:  'ca',
-      zp:  (f.querySelector && f.querySelector('[name="zip"]'))    ? f.querySelector('[name="zip"]').value.trim()    : '',
-      fbc: getFbc(),
-      fbp: getFbp()
-    };
-    sendCAPIEvent('Lead', eventId, userData, { source: SOURCE });
+    if (consentGranted()) {
+      var f = form || {};
+      var userData = {
+        em:  (f.querySelector && f.querySelector('[name="email"]'))  ? f.querySelector('[name="email"]').value.trim()  : '',
+        ph:  (f.querySelector && f.querySelector('[name="phone"]'))  ? f.querySelector('[name="phone"]').value.trim()  : '',
+        fn:  (f.querySelector && f.querySelector('[name="fname"]'))  ? f.querySelector('[name="fname"]').value.trim()  : '',
+        ln:  (f.querySelector && f.querySelector('[name="lname"]'))  ? f.querySelector('[name="lname"]').value.trim()  : '',
+        ct:  (f.querySelector && f.querySelector('[name="city"]'))   ? f.querySelector('[name="city"]').value.trim()   : '',
+        st:  'ca',
+        zp:  (f.querySelector && f.querySelector('[name="zip"]'))    ? f.querySelector('[name="zip"]').value.trim()    : '',
+        fbc: getFbc(),
+        fbp: getFbp()
+      };
+      sendCAPIEvent('Lead', eventId, userData, { source: SOURCE });
+    }
 
     wrap.innerHTML =
       '<div class="form-success">' +
@@ -249,11 +262,21 @@
   // ══════════════════════════════════════════════
   document.addEventListener('DOMContentLoaded', function () {
     // ── CAPI: PageView — server-side mirror of the browser pixel PageView ──
-    // The browser pixel fires fbq('track','PageView') in <head> with an event_id
-    // stored as window._pvEventId.  We read that same ID here so both sides
-    // share it and Meta can deduplicate correctly.
-    var pageViewEventId = window._pvEventId || generateEventId();
-    sendCAPIEvent('PageView', pageViewEventId, { fbc: getFbc(), fbp: getFbp() }, { source: SOURCE });
+    // consent.js fires the browser pixel PageView with window._pvEventId
+    // when consent is granted.  We read that same ID here so both sides
+    // share it and Meta can deduplicate correctly.  Gated on consent.
+    function fireCAPIPageView() {
+      var pageViewEventId = window._pvEventId || generateEventId();
+      sendCAPIEvent('PageView', pageViewEventId, { fbc: getFbc(), fbp: getFbp() }, { source: SOURCE });
+    }
+    if (consentGranted()) {
+      fireCAPIPageView();
+    } else if (window.__consent && typeof window.__consent.onChange === 'function') {
+      // If the visitor accepts mid-session, fire the PageView once.
+      window.__consent.onChange(function (status) {
+        if (status === 'accepted') fireCAPIPageView();
+      });
+    }
 
     var form = document.querySelector('.form-wrap form');
     if (form) {
@@ -263,8 +286,11 @@
     // ── Meta Pixel + CAPI: Contact — fires on any tel: link click ──
     // Attached at the <a> level so nested SVG/span clicks bubble correctly.
     // Each click generates its own event ID for browser↔server deduplication.
+    // Gated on consent: if the visitor declined, the click still works as
+    // a phone-call link — Meta just is not told about it.
     document.querySelectorAll('a[href^="tel:"]').forEach(function(link) {
       link.addEventListener('click', function() {
+        if (!consentGranted()) return;
         var contactEventId = generateEventId();
         if (typeof fbq === 'function') {
           fbq('track', 'Contact', {}, { eventID: contactEventId });
