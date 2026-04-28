@@ -38,8 +38,39 @@
     window.__consent.status = value;
     window.__consent.granted = (value === 'accepted');
     if (value === 'accepted') loadTrackers();
+    if (value === 'declined') clearTrackingCookies();
     hideBanner();
     listeners.forEach(function (cb) { try { cb(value); } catch (e) {} });
+  }
+
+  // Actively delete tracking cookies that may already exist on the device
+  // from prior visits (before consent gating shipped). Targets:
+  //   _fbp, _fbc           — Meta Pixel browser/click IDs
+  //   _ga, _gid, _gat      — Google Analytics base cookies
+  //   _ga_*  (e.g. _ga_X80HR36QTB)  — GA4 session cookies
+  //   _gat_*               — GA throttle cookies
+  // Cookies set by gtag.js / fbevents.js are typically scoped to the
+  // registrable domain (e.g. `.infroofing.com`), but we sweep multiple
+  // domain forms to be safe.
+  function clearTrackingCookies() {
+    var staticNames = ['_fbp', '_fbc', '_ga', '_gid', '_gat'];
+    var hosts = [location.hostname, '.' + location.hostname];
+    var parts = location.hostname.split('.');
+    if (parts.length > 2) hosts.push('.' + parts.slice(-2).join('.'));
+
+    var cookies = (document.cookie || '').split(';');
+    for (var i = 0; i < cookies.length; i++) {
+      var name = cookies[i].split('=')[0].trim();
+      if (!name) continue;
+      if (staticNames.indexOf(name) === -1 && !/^_ga_/.test(name) && !/^_gat_/.test(name)) continue;
+
+      // Expire on each candidate domain scope...
+      for (var j = 0; j < hosts.length; j++) {
+        document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=' + hosts[j];
+      }
+      // ...and as a host-only cookie (no domain attribute).
+      document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+    }
   }
 
   function loadTrackers() {
@@ -107,7 +138,12 @@
     if (window.__consent.granted) {
       // Previously-accepted users get trackers immediately
       loadTrackers();
-    } else if (!window.__consent.status) {
+    } else if (window.__consent.status === 'declined') {
+      // Defensive: a returning decliner may still have tracking cookies
+      // set during an earlier visit (before consent gating shipped, or
+      // before they declined). Sweep them every page load.
+      clearTrackingCookies();
+    } else {
       // No decision yet — show banner
       showBanner();
     }
